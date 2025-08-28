@@ -1,7 +1,10 @@
 package org.lessons.java.progetto_finale_backend.model;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -33,7 +36,7 @@ public class Videogame {
     private String description;
 
     @Column(name = "price")
-    @Min( value = 0, message = "The price cannot be negative")
+    @Min(value = 0, message = "The price cannot be negative")
     @NotNull(message = "The price of videogame is required")
     private BigDecimal price;
 
@@ -41,19 +44,17 @@ public class Videogame {
     @NotBlank(message = "The foto URL as required")
     private String fotoUrl;
 
-    @ManyToMany
-    @JoinTable(
-        name = "genre_videogame",
-        joinColumns = @JoinColumn(name= "videogame_id"),
-        inverseJoinColumns = @JoinColumn(name = "genre_id")
-    )
-    private List<Genre> genres;
+    @Column(name = "release_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate release_date;
 
+    @ManyToMany
+    @JoinTable(name = "genre_videogame", joinColumns = @JoinColumn(name = "videogame_id"), inverseJoinColumns = @JoinColumn(name = "genre_id"))
+    private List<Genre> genres;
 
     public Videogame() {
 
     }
-    
 
     public Integer getId() {
         return id;
@@ -95,6 +96,14 @@ public class Videogame {
         this.fotoUrl = fotoUrl;
     }
 
+    public LocalDate getRelease_date() {
+        return release_date;
+    }
+
+    public void setRelease_date(LocalDate release_date) {
+        this.release_date = release_date;
+    }
+
     public List<Genre> getGenres() {
         return genres;
     }
@@ -103,5 +112,4 @@ public class Videogame {
         this.genres = genres;
     }
 
-    
 }
