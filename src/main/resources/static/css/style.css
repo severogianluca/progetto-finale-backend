@@ -9,7 +9,7 @@
   margin-top: 20px;
 }
 
-.nav-sbeam a{
+.nav-sbeam a {
   color: #dcdcdf;
   font-weight: bold;
 }
@@ -18,13 +18,12 @@
   max-width: 60% !important; /* o 100% */
 }
 
-body {
-
+body{
   background: linear-gradient(to bottom, #29445b, #1b2838);
-  min-height: 100vh; 
+  min-height: 100vh;
   margin: 0;
   padding: 0;
-  color: #dcdcdf; 
+  color: #dcdcdf;
   font-family: "Arial", "Helvetica", "Verdana", sans-serif;
 }
 
@@ -34,9 +33,24 @@ body {
 } */
 
 .card-color {
-    border-radius: 0;
-    border: none;
-    background-color: #1b2838;
-    color: #dcdcdf;
-    box-shadow: none;
+  border-radius: 0;
+  border: none;
+  background-color: #1b2838;
+  color: #dcdcdf;
+  box-shadow: none;
+
+  /* aggiunto per l'ingrandimento */
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-sbeam a:hover {
+  color: #1a9fff;
+}
+
+.card-color:hover {
+  background-color: #aacee3;
+  color: #1b2838;
+
+  /* ingrandimento */
+  transform: scale(1.10);
 }

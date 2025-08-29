@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sbeam</title>
+    <title>Benvenuti su SBEAM</title>
 
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" />
     <link rel="stylesheet" href="/css/style.css" />
@@ -14,14 +14,18 @@
 <body>
     <header th:insert="~{fragments/navbar :: navbar}">
     </header>
+    <div class="col-12">
+        <img src="/img/metal-gear-header.png" alt="metal-gear" class="img-fluid w-100">
+    </div>
 
     <main class="container mt-5">
         <div class="mb-3">
             <h2>Benvenuti su Sbeam</h2>
         </div>
 
+
         <div th:each="videogame : ${videogames}" th:object="${videogame}" class="card mb-3 card-color">
-            <div class="row g-0"> 
+            <div class="row g-0">
                 <div class="col-4">
                     <img th:src="*{fotoUrl}" alt="Foto videogame" class="img-fluid" />
                 </div>
