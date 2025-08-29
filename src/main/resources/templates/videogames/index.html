@@ -13,11 +13,31 @@
 
 <body>
     <header th:insert="~{fragments/navbar :: navbar}">
-
     </header>
 
-    <main>
+    <main class="container mt-5">
+        <div class="mb-3">
+            <h2>Benvenuti su Sbeam</h2>
+        </div>
 
+        <div th:each="videogame : ${videogames}" th:object="${videogame}" class="card mb-3 card-color">
+            <div class="row g-0"> 
+                <div class="col-4">
+                    <img th:src="*{fotoUrl}" alt="Foto videogame" class="img-fluid" />
+                </div>
+                <div class="col-8">
+                    <div class="card-body">
+                        <a th:href="@{/videogames/{id}(id=${videogame.id})}" th:text="|*{name} 👈|"
+                            class="card-title text-decoration-none fw-bold fs-5"></a>
+                        <p th:text="*{description}" class="card-text"></p>
+                        <p th:text="|*{price}€|" class="card-text"></p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        </div>
     </main>
 
 
