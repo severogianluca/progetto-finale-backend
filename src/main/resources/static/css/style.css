@@ -2,6 +2,18 @@
   background-color: #171d25;
 }
 
+.nav-sbeam a {
+  color: #dcdcdf;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav-sbeam a:hover {
+  color: #1a9fff;
+  text-decoration-color: #1a9fff;
+  border-bottom: 3px solid #1a9fff;
+}
+
 .logo-sbeam {
   width: auto;
   height: 50px;
@@ -9,16 +21,11 @@
   margin-top: 20px;
 }
 
-.nav-sbeam a {
-  color: #dcdcdf;
-  font-weight: bold;
-}
-
 .container {
-  max-width: 60% !important; /* o 100% */
+  max-width: 60% !important;
 }
 
-body{
+body {
   background: linear-gradient(to bottom, #29445b, #1b2838);
   min-height: 100vh;
   margin: 0;
@@ -27,10 +34,13 @@ body{
   font-family: "Arial", "Helvetica", "Verdana", sans-serif;
 }
 
-
 /* .text-color{
   color: #dcdcdf;
 } */
+video {
+  border-radius: 0;
+  border: none;
+}
 
 .card-color {
   border-radius: 0;
@@ -40,11 +50,7 @@ body{
   box-shadow: none;
 
   /* aggiunto per l'ingrandimento */
-  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
-}
-
-.nav-sbeam a:hover {
-  color: #1a9fff;
+  /* transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease; */
 }
 
 .card-color:hover {
@@ -52,5 +58,40 @@ body{
   color: #1b2838;
 
   /* ingrandimento */
-  transform: scale(1.10);
+  /* transform: scale(1.08); */
 }
+
+.txt{
+  color: #2c5369;
+}
+
+
+.sbeam-badge {
+    display: inline-block;
+    line-height: 19px;
+    padding: 0 7px;
+    color: #67c1f5; 
+    background-color: rgba(103, 193, 245, 0.2);
+    box-shadow: none;
+    margin-right: 2px;
+    border-radius: 2px;
+    margin-bottom: 3px;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 11px;
+    font-family: "Motiva Sans", sans-serif;
+    text-transform: none;
+    border: 1px solid rgba(103, 193, 245, 0.2); 
+}
+
+.sbeam-badge:hover {
+    color: #ffffff;
+    background-color: #67c1f5;
+    border-color: #67c1f5;
+}
+
+
+
+
