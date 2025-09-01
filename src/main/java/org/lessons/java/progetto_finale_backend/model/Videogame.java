@@ -13,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
@@ -32,6 +33,7 @@ public class Videogame {
     private String name;
 
     @Column(name = "description")
+    @Lob
     @NotBlank(message = "The description of videogame cannot be blank")
     private String description;
 
@@ -44,9 +46,13 @@ public class Videogame {
     @NotBlank(message = "The foto URL as required")
     private String fotoUrl;
 
+    @Column(name = "video_url")
+    @NotBlank(message = "The video URL as required")
+    private String videoUrl;
+
     @Column(name = "release_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate release_date;
+    private LocalDate releaseDate;
 
     @ManyToMany
     @JoinTable(name = "genre_videogame", joinColumns = @JoinColumn(name = "videogame_id"), inverseJoinColumns = @JoinColumn(name = "genre_id"))
@@ -96,12 +102,12 @@ public class Videogame {
         this.fotoUrl = fotoUrl;
     }
 
-    public LocalDate getRelease_date() {
-        return release_date;
+    public LocalDate getReleaseDate() {
+        return releaseDate;
     }
 
-    public void setRelease_date(LocalDate release_date) {
-        this.release_date = release_date;
+    public void setReleaseDate(LocalDate releaseDate) {
+        this.releaseDate = releaseDate;
     }
 
     public List<Genre> getGenres() {
@@ -112,4 +118,13 @@ public class Videogame {
         this.genres = genres;
     }
 
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+
+    public void setVideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
+    }
+
+    
 }
