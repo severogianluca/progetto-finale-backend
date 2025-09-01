@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+    <link rel="icon" type="image/png" th:href="@{/img/icona.png}" />
+    <title th:text="${game.name}"></title>
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" />
+
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+
+</head>
+
+<body class="bg-principale">
+    <header th:insert="~{fragments/navbar :: navbar}">
+
+    </header>
+
+    <main class="mb-3 container" th:object="${game}">
+
+        <div>
+            <div class="p-3 mb-4 mt-5 ">
+                <div>
+
+                    <div>
+                        <h2 th:text="*{name}" class="card-title mb-3"></h2>
+                    </div>
+                    <div class="mb-5">
+                        <img src="https://clan.fastly.steamstatic.com/images/32528477/0560229ab00c6083267f29fcfc0c8b27fadfd819.jpg"
+                            alt="sales" class="img-fluid w-100 shadow-sm">
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-8">
+                            <div class="ratio ratio-16x9 shadow-sm">
+                                <iframe th:src="*{videoUrl}" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+
+                        <div class=" col-4">
+                            <img th:src="*{fotoUrl}" alt="dragonball" class="img-fluid" />
+                            <p th:text="*{description}" class="mt-2 small"></p>
+                            <div class="small d-flex gap-3">
+                                <div class="txt ">
+                                    <p>Data di rilascio: </p>
+                                </div>
+                                <div>
+                                    <p th:text="${#temporals.format(game.releaseDate, 'dd/MM/yyyy')}"></p>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <span th:each="genre : *{genres}" th:text="${genre.name}" class="sbeam-badge me-1">
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Blocco per visualizzare gli ingredienti -->
+
+
+                    <!-- <th:block th:if="${pizza.getIngredienti().size() > 0}">
+                            <h4 class="mb-2">ingredienti:</h4>
+                            <ul class="mb-3 ps-4">
+                                <li th:each="ingrediente : *{ingredienti}" th:text="${ingrediente.nome}" />
+                            </ul>
+                        </th:block> -->
+
+                    <!-- Blocco per messaggio quando non ci sono ingredienti -->
+
+
+                    <!-- <th:block th:unless="${pizza.getIngredienti().size() > 0}">
+                            <p class="mb-3 alert alert-info">This pizza has no ingredients</p>
+                        </th:block>
+
+
+                        <p th:text="*{descrizione}" class="card-text"></p>
+                        <p th:text="|*{prezzo}€|" class="card-text"></p>
+                        <a th:href="@{/pizzas}" type="button" class="btn btn-danger">Indietro</a>
+                        <a th:href="@{/pizzas/{id}/offerta(id=${pizza.id})}" type="button" class="btn btn-success" sec:authorize="hasAuthority('ADMIN')">Crea
+                            offerta</a> -->
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </main>
+
+</body>
+
+</html>
