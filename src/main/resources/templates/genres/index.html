@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" th:href="@{/img/icona.png}" />
+
+    <title>Benvenuti su SBEAM</title>
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" />
+    <link rel="stylesheet" href="/css/style.css" />
+
+</head>
+
+<body>
+    <header th:insert="~{fragments/navbar :: navbar}">
+    </header>
+
+    <main class="container mt-4">
+
+        <div class="d-flex justify-content-between align-items-center mt-4 ">
+            <div>
+                <h2>Lista dei generi</h2>
+            </div>
+            <div>
+                <a th:href="@{/genres/create}" type="button" class="btn btn-success">Aggiungi genere</a>
+            </div>
+        </div>
+
+        <hr>
+        <div class="row">
+            <div th:each="genre : ${genres}" class="col-md-4 mb-3">
+                <div class="card h-100 card-color">
+                    <a th:href="@{/genres/edit/{id}(id=${genre.id})}" class="stretched-link"></a>
+
+                    <div class="card-body d-flex justify-content-between align-items-center ">
+                        <div>
+                            <p class="card-text fw-bold" th:text="${genre.name}"></p>
+                        </div>
+                        <div class="btn-index">
+                            <button type="button" class="btn btn-outline-danger me-2 btn-sm " data-bs-toggle="modal"
+                                th:attr="data-bs-target=|#deleteModal-${genre.id}|">
+                                Elimina
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" th:id="|deleteModal-${genre.id}|" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5 modale" th:text="|Stai per eliminare '${genre.name}'|"></h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Chiudi"></button>
+                            </div>
+                            <div class="modal-body modale">
+                                Se sei sicuro di voler procedere, clicca su <strong>Elimina</strong>.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Annulla</button>
+                                <form th:action="@{/genres/delete/{id}(id=${genre.id})}" method="post">
+                                    <button type="submit" class="btn btn-danger">Elimina</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+
+
+
+    <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>

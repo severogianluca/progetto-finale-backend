@@ -23,11 +23,11 @@
     <main class="container mt-5">
 
         <div class="d-flex justify-content-between align-items-center mt-4 mb-4">
-            <div class="mb-3">
+            <div>
                 <h2>Benvenuti su Sbeam</h2>
             </div>
             <div>
-                <a th:href="@{/videogames/create}" type="button" class="btn btn-success">Add new videogame</a>
+                <a th:href="@{/videogames/create}" type="button" class="btn btn-success">Aggiungi videogame</a>
             </div>
         </div>
 
@@ -35,13 +35,13 @@
         <div th:each="videogame : ${videogames}" th:object="${videogame}" class="card mb-3 card-color">
             <a th:href="@{/videogames/{id}(id=${videogame.id})}" class="stretched-link"></a>
             <div class="row g-0">
-                <div class="col-4">
+                <div class="col-12 col-md-4">
                     <div class="ratio ratio-16x9">
                         <img th:src="*{fotoUrl}" alt="Foto videogame" class="w-100 h-100 rounded-start" />
                     </div>
                 </div>
 
-                <div class="col-8">
+                <div class="col-12 col-md-8">
                     <div class="card-body">
                         <h3 th:text="*{name}" class=" fw-bold fs-5"></h3>
                         <p th:text="*{description}" class="card-text text-truncate mt-3"></p>
