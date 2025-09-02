@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/css/style.css" />
 </head>
 
-<body class="bg-principale">
+<body class="bg-principale form-page">
     <header th:insert="~{fragments/navbar :: navbar}">
 
     </header>
@@ -18,7 +18,7 @@
         <div class="row">
             <div class="class col-12">
                 <th:bloc>
-                    <h1 th:if="${edit}" class="text-center mt-5 mb-4">Modifica l'ingredienti</h1>
+                    <h1 th:if="${edit}" class="text-center mt-5 mb-4">Modifica dati del videogame</h1>
                     <h1 th:unless="${edit}" class="text-center mt-5 mb-4">Inserisci un nuovo videogame</h1>
                     <div>
                         <form id="videogame-form" th:action="@{/videogames/create}" th:object="${videogame}"
@@ -26,12 +26,6 @@
 
                             <input type="hidden" th:field="*{id}" />
 
-                            <!-- <div th:if="${#fields.hasErrors()}">
-                                <ul class="alert alert-danger p-5">
-                                    <li th:each="error : ${#fields.allErrors()}" th:text="${error}"></li>
-                                </ul>
-
-                            </div> -->
 
                             <div class="mb-3">
                                 <label for="name" class="form-label">Nome videogame</label>
@@ -47,18 +41,6 @@
                             </div>
 
 
-                            <div class="class mb-3">
-                                <div class="single-ingrediente form-check" th:each="genre : ${genres}">
-                                    <input type="checkbox" th:id="|genre-${genre.id}|" th:field="*{genres}"
-                                        th:value="${genre.id}">
-                                    <label th:for="|genre-${genres.id}|" class="form-check-label"
-                                        th:text="${genre.name}"></label>
-                                </div>
-                            </div>
-
-
-
-
                             <div class="mb-3">
                                 <label for="description" class="form-label">Descrizione</label>
                                 <textarea id="description" class="form-control" placeholder="Inserisci una descrizione"
@@ -68,6 +50,15 @@
                                         <li th:each="error : ${#fields.errors('description')}" th:text="${error}"></li>
 
                                     </ul>
+                                </div>
+                            </div>
+
+                            <div class="class mb-3 row">
+                                <div class="col-4 single-genre form-check" th:each="genre : ${genres}">
+                                    <input type="checkbox" th:id="|genre-${genre.id}|" th:field="*{genres}"
+                                        th:value="${genre.id}">
+                                    <label th:for="|genre-${genre.id}|" class="form-check-label"
+                                        th:text="${genre.name}"></label>
                                 </div>
                             </div>
 
@@ -120,12 +111,9 @@
                                 </div>
                             </div>
 
-
-
                             <div class="mb-3 d-flex justify-content-between">
                                 <a th:href="@{/videogames}" type="button" class="btn btn-danger">Indietro</a>
                                 <input type="submit" class="btn btn-success" value="Save">
-
                             </div>
 
                             <div>
