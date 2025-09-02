@@ -25,7 +25,6 @@
         <div>
             <div class="p-3 mb-4 mt-5 ">
                 <div>
-
                     <div>
                         <h2 th:text="*{name}" class="card-title mb-3"></h2>
                     </div>
@@ -55,43 +54,14 @@
                                 <span th:each="genre : *{genres}" th:text="${genre.name}" class="sbeam-badge me-1">
                                 </span>
                             </div>
+                            <div>
+                                <a th:href="@{/videogames}" type="button" class="btn btn-danger">Indietro</a>
+                            </div>
                         </div>
-
                     </div>
-
-
-                    <!-- Blocco per visualizzare gli ingredienti -->
-
-
-                    <!-- <th:block th:if="${pizza.getIngredienti().size() > 0}">
-                            <h4 class="mb-2">ingredienti:</h4>
-                            <ul class="mb-3 ps-4">
-                                <li th:each="ingrediente : *{ingredienti}" th:text="${ingrediente.nome}" />
-                            </ul>
-                        </th:block> -->
-
-                    <!-- Blocco per messaggio quando non ci sono ingredienti -->
-
-
-                    <!-- <th:block th:unless="${pizza.getIngredienti().size() > 0}">
-                            <p class="mb-3 alert alert-info">This pizza has no ingredients</p>
-                        </th:block>
-
-
-                        <p th:text="*{descrizione}" class="card-text"></p>
-                        <p th:text="|*{prezzo}€|" class="card-text"></p>
-                        <a th:href="@{/pizzas}" type="button" class="btn btn-danger">Indietro</a>
-                        <a th:href="@{/pizzas/{id}/offerta(id=${pizza.id})}" type="button" class="btn btn-success" sec:authorize="hasAuthority('ADMIN')">Crea
-                            offerta</a> -->
                 </div>
-
-
             </div>
-
-
         </div>
-
-
     </main>
 
 </body>
