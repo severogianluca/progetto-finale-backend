@@ -29,7 +29,7 @@ public class VideogameController {
     private GenreService genreService;
 
     @GetMapping
-    public String getListaPizzas(Model model) {
+    public String getListaVideogames(Model model) {
         List<Videogame> videogames = videogameService.findAll();
 
         model.addAttribute("videogames", videogames);
@@ -38,8 +38,7 @@ public class VideogameController {
     }
 
     @GetMapping("/{id}")
-    public String getPizzaById(@PathVariable("id") int id, Model model) {
-
+    public String getVideogameById(@PathVariable("id") int id, Model model) {
         Optional<Videogame> game = videogameService.findById(id);
         if (game.isPresent()) {
             model.addAttribute("game", game.get());

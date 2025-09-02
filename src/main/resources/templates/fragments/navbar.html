@@ -11,14 +11,15 @@
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" />
 </head>
 
-<body class="container">
+<body>
     <nav th:fragment="navbar" class="nav-sbeam">
         <div class="container d-flex align-items-center">
             <img src="/img/sbeam-logo.png" alt="sbeam-logo" class="logo-sbeam me-3">
             <div class="d-flex">
                 <a th:href="@{/videogames}" class=" me-3">NEGOZIO</a>
-                <a th:href="@{#}" class="e me-3">COMMUNITY</a>
-                <a th:href="@{#}" >INFORMAZIONI</a>
+                <a th:href="@{#}" class="me-3">COMMUNITY</a>
+                <a th:href="@{#}" class="me-3">INFORMAZIONI</a>
+                <a th:href="@{/genres}">GENERI</a>
             </div>
         </div>
     </nav>
