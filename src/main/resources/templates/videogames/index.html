@@ -33,21 +33,20 @@
 
 
         <div th:each="videogame : ${videogames}" th:object="${videogame}" class="card mb-3 card-color">
+            <a th:href="@{/videogames/{id}(id=${videogame.id})}" class="stretched-link"></a>
             <div class="row g-0">
                 <div class="col-4">
                     <div class="ratio ratio-16x9">
-                        <img th:src="*{fotoUrl}" alt="Foto videogame"
-                            class="w-100 h-100 rounded-start" />
+                        <img th:src="*{fotoUrl}" alt="Foto videogame" class="w-100 h-100 rounded-start" />
                     </div>
                 </div>
 
                 <div class="col-8">
                     <div class="card-body">
-                        <a th:href="@{/videogames/{id}(id=${videogame.id})}" th:text="|*{name} 👈|"
-                            class="card-title text-decoration-none fw-bold fs-5"></a>
+                        <h3 th:text="*{name}" class=" fw-bold fs-5"></h3>
                         <p th:text="*{description}" class="card-text text-truncate mt-3"></p>
                         <div class="d-flex justify-content-between align-items-center mt-5">
-                            <div>
+                            <div class="btn-index">
                                 <button type="button" class="btn btn-outline-danger me-2" data-bs-toggle="modal"
                                     th:attr="data-bs-target=|#deleteModal-${videogame.id}|">
                                     Elimina
@@ -59,8 +58,6 @@
                                 <p th:text="|*{price}€|" class="card-text"></p>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
