@@ -30,13 +30,34 @@
                     </div>
                     <div class="mb-5">
                         <img src="https://clan.fastly.steamstatic.com/images/32528477/0560229ab00c6083267f29fcfc0c8b27fadfd819.jpg"
-                            alt="sales" class="img-fluid w-100 shadow-sm">
+                            alt="sales" class=" w-100">
                     </div>
                     <div class="row mb-4">
                         <div class="col-8">
-                            <div class="ratio ratio-16x9 shadow-sm">
+                            <div class="ratio ratio-16x9">
                                 <iframe th:src="*{videoUrl}" frameborder="0" allowfullscreen></iframe>
                             </div>
+
+                            <div class="card w-100 mt-3 price-card-show mb-5">
+                                <div class="card-body d-flex justify-content-between align-items-center  ">
+                                    <div>
+                                        <p class="card-text fw-bold" th:text="|Acquista *{name}|"></p>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center price small gap-3">
+                                    <div th:text="*{price}"></div>
+                                    <div class="kart">
+                                        Aggiungi al carrello
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <a th:href="@{/videogames}" type="button" class="btn btn-danger">Indietro</a>
+                            </div>
+
+
+
+
                         </div>
 
                         <div class=" col-4">
@@ -50,17 +71,18 @@
                                     <p th:text="${#temporals.format(game.releaseDate, 'dd/MM/yyyy')}"></p>
                                 </div>
                             </div>
+
                             <div class="mb-3">
                                 <span th:each="genre : *{genres}" th:text="${genre.name}" class="sbeam-badge me-1">
                                 </span>
                             </div>
-                            <div>
-                                <a th:href="@{/videogames}" type="button" class="btn btn-danger">Indietro</a>
-                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
+
+
         </div>
     </main>
 
