@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import jakarta.validation.Valid;
 
 @Controller
-@RequestMapping("/videogames")
+@RequestMapping("/")
 public class VideogameController {
 
     @Autowired
@@ -29,6 +29,11 @@ public class VideogameController {
     private GenreService genreService;
 
     @GetMapping
+    public String home() {
+        return "redirect:/videogames";
+    }
+
+    @GetMapping("/videogames")
     public String getListaVideogames(Model model) {
         List<Videogame> videogames = videogameService.findAll();
 
@@ -37,7 +42,7 @@ public class VideogameController {
         return "videogames/index";
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/videogames/{id}")
     public String getVideogameById(@PathVariable("id") int id, Model model) {
         Optional<Videogame> game = videogameService.findById(id);
         if (game.isPresent()) {
@@ -49,14 +54,14 @@ public class VideogameController {
         return "redirect:videogames";
     }
 
-    @GetMapping("/create")
+    @GetMapping("/videogames/create")
     public String create(Model model) {
         model.addAttribute("videogame", new Videogame());
         model.addAttribute("genres", genreService.findAll());
         return "videogames/create-or-edit";
     }
 
-    @PostMapping("/create")
+    @PostMapping("/videogames/create")
     public String store(@Valid @ModelAttribute("videogame") Videogame formVideogame, BindingResult bindingResult,
             Model model) {
         if (bindingResult.hasErrors()) {
@@ -67,7 +72,7 @@ public class VideogameController {
         return "redirect:/videogames";
     }
 
-    @GetMapping("/edit/{id}")
+    @GetMapping("/videogames/edit/{id}")
     public String edit(@PathVariable("id") int id, Model model) {
         Optional<Videogame> game = videogameService.findById(id);
         if (game.isPresent()) {
@@ -80,7 +85,7 @@ public class VideogameController {
         return "redirect:/videogames";
     }
 
-    @PostMapping("/edit/{id}")
+    @PostMapping("/videogames/edit/{id}")
     public String update(@Valid @ModelAttribute("videogame") Videogame formVideogame, BindingResult bindingResult,
             Model model) {
         if (bindingResult.hasErrors()) {
@@ -91,7 +96,7 @@ public class VideogameController {
         return "redirect:/videogames";
     }
 
-    @PostMapping("/delete/{id}")
+    @PostMapping("/videogames/delete/{id}")
     public String delete(@PathVariable Integer id) {
         videogameService.delete(id);
         return "redirect:/videogames";

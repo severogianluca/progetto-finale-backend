@@ -27,7 +27,7 @@
                 <h2>Benvenuti su Sbeam</h2>
             </div>
             <div>
-                <a th:href="@{/videogames/create}" type="button" class="btn btn-success">Aggiungi videogame</a>
+                <a th:href="@{/videogames/create}" type="button" class="btn btn-success" sec:authorize="hasAuthority('ADMIN')">Aggiungi videogame</a>
             </div>
         </div>
 
@@ -48,11 +48,11 @@
                         <div class="d-flex justify-content-between align-items-center mt-5">
                             <div class="btn-index">
                                 <button type="button" class="btn btn-outline-danger me-2" data-bs-toggle="modal"
-                                    th:attr="data-bs-target=|#deleteModal-${videogame.id}|">
+                                    th:attr="data-bs-target=|#deleteModal-${videogame.id}|" sec:authorize="hasAuthority('ADMIN')">
                                     Elimina
                                 </button>
                                 <a th:href="@{/videogames/edit/{id}(id=${videogame.id})}"
-                                    class="btn btn-outline-success">Modifica</a>
+                                    class="btn btn-outline-success" sec:authorize="hasAuthority('ADMIN')">Modifica</a>
                             </div>
                             <div>
                                 <p th:text="|*{price}€|" class="card-text"></p>

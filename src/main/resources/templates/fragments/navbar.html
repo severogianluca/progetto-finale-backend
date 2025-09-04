@@ -13,15 +13,39 @@
 
 <body>
     <nav th:fragment="navbar" class="nav-sbeam">
-        <div class="container d-flex align-items-center">
-            <img src="/img/sbeam-logo.png" alt="sbeam-logo" class="logo-sbeam me-3">
-            <div class="d-flex">
-                <a th:href="@{/videogames}" class=" me-3">NEGOZIO</a>
-                <a th:href="@{#}" class="me-3">COMMUNITY</a>
-                <a th:href="@{#}" class="me-3">INFORMAZIONI</a>
-                <a th:href="@{/genres}">GENERI</a>
+        <div class="container d-flex align-items-center gap-5">
+            <div class="d-flex align-items-center">
+                <img src="/img/sbeam-logo.png" alt="sbeam-logo" class="logo-sbeam me-3">
+                <div class="d-flex">
+                    <a th:href="@{/videogames}" class=" me-3">NEGOZIO</a>
+                    <a th:href="@{#}" class="me-3">COMMUNITY</a>
+                    <a th:href="@{#}" class="me-3">INFORMAZIONI</a>
+                    <a th:href="@{/genres}" sec:authorize="hasAuthority('ADMIN')">GENERI</a>
+                </div>
             </div>
+
+            <div class="ms-auto">
+                <div class="user-info d-flex justify-content-between align-items-center gap-2 ">
+                    <div>
+                        user: <span sec:authentication="name" class="fw-bold"></span>
+
+                    </div>
+                    <div>
+                        <span sec:authentication="principal.authorities" class="fw-bold"></span>
+
+                    </div>
+                    <div>
+                        <a href="/logout" class="btn">Sign out</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
         </div>
+
     </nav>
 
        
