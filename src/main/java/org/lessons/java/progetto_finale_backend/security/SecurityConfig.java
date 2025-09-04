@@ -27,7 +27,7 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.POST, "/videogames/**").hasAuthority("ADMIN")
                 .requestMatchers("/genres", "/genres/**").hasAuthority("ADMIN")
                 .requestMatchers("/videogames", "/videogames/**").hasAnyAuthority("USER", "ADMIN")
-                .anyRequest().permitAll() // meglio di /** così non apri tutto in modo implicito
+                .anyRequest().permitAll() 
                 .and().formLogin()
                 .and().logout()
                 .and().exceptionHandling();
