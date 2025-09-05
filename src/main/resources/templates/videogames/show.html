@@ -51,13 +51,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div>
-                                <a th:href="@{/videogames}" type="button" class="btn btn-danger">Indietro</a>
-                            </div>
 
-
-
-
+                            
                         </div>
 
                         <div class=" col-4">
@@ -75,6 +70,10 @@
                             <div class="mb-3">
                                 <span th:each="genre : *{genres}" th:text="${genre.name}" class="sbeam-badge me-1">
                                 </span>
+                            </div>
+
+                            <div>
+                                <a th:href="@{/videogames}" type="button" class="btn btn-danger">Indietro</a>
                             </div>
 
                         </div>
