@@ -31,11 +31,11 @@ public class VideogameRestController {
 
     @GetMapping
     public ResponseEntity<Map<String, Object>> getList() {
-        Map<String, Object> list = new HashMap<>();
-        list.put("Messaggio", "Ecco la lista dei videogame");
-        list.put("data", videogameService.findAll());
+        Map<String, Object> response = new HashMap<>();
+        response.put("Messaggio", "Ecco la lista dei videogame");
+        response.put("data", videogameService.findAll());
 
-        return ResponseEntity.status(HttpStatus.OK).body(list);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
     
 
