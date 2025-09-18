@@ -47,7 +47,6 @@ public class VideogameController {
         Optional<Videogame> game = videogameService.findById(id);
         if (game.isPresent()) {
             model.addAttribute("game", game.get());
-            // model.addAttribute("ingredienti", ingredienteRepository.findAll());
 
             return "videogames/show";
         }
